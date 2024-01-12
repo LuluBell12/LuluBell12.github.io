@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>數學算不出來怎麼辦</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;/*設定字體*/
+      text-align: center;/*文字置中*/
+      margin: 50px;/*邊界大小*/
+    }
+
+    h1 {
+      color: black;/*設定標題文字顏色*/
+    }
+
+    #story {
+      font-size: 18px;
+      margin-bottom: 20px;
+      /*設定故事文字樣式*/
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      /*設定按鈕內容置中*/
+    }
+
+    .button-container button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #fff;
+      color: black;
+      border: none;
+      cursor: pointer;
+      /*設定按鈕外框&內容&顏色*/
+    }
+  </style>
+</head>
+
+<body>
+  <h1>尋找正解之旅-啟程篇</h1><!--標題-->
+  <div id="story">準備好要踏上旅途了嗎?</div><!--故事內容-->
+  <div class="button-container">
+    <button onclick="startGame()">GAME START</button>
+  </div><!--開始遊戲的按鈕，按下去觸發startGame()-->
+  <script>
+    //基本上就是由startGame()開始遊戲後，makeChoice(choice)處理選擇，再透過switch、case根據不同的選擇來推進不同的劇情發展
+    function startGame() {
+      document.getElementById("story").innerHTML = "同一題數學你算了三次，三次答案都不一樣，甚至沒有哪一個數字出現在題目的選項裡，對自己極具自信的你，無法接受這樣的結果。<br>於是，為了洗刷這份恥辱，你毅然決然地踏上前往異世界的旅途，前去尋找遺失的正確答案。</br>";
+      document.querySelector(".button-container").innerHTML = `
+        <button onclick="makeChoice(1)">馬上出發</button>
+        <button onclick="makeChoice(2)">先、先等一下，我頭好痛這什麼劇情</button>
+      `;
+    }
+    function makeChoice(choice) {
+      switch (choice) {
+        case 1:
+          document.getElementById("story").innerHTML = "透過傳送卷軸來到異世界之後，你發現身處一個伸手不見五指的地方，此時你聽見...";
+          document.querySelector(".button-container").innerHTML = `
+            <button onclick="makeChoice(3)">你好啊陌生人，沒想到...接下來就由我...來當你的對手</button>
+            <button onclick="makeChoice(4)">耳邊響起了《致愛麗絲》的旋律</button>
+          `;
+          break;
+
+        case 2:
+          document.getElementById("story").innerHTML = "因為發展實在太過荒唐，所以你決定先讓腦袋緩緩。<br>一段時間後...</br>";
+          document.querySelector(".button-container").innerHTML = `
+            <button onclick="makeChoice(5)">讓我繼續掙扎</button>
+            <button onclick="makeChoice(6)">算了，管它的</button>
+          `;
+          break;
+        case 3:
+          document.getElementById("story").innerHTML = "四周開始慢慢的有光線進入，你逐漸恢復視力，看清了聲音源頭，一個長得跟你數學老師一模一樣但不是你數學老師的人出現了!?";
+          document.querySelector(".button-container").innerHTML = `
+            <button onclick="makeChoice(7)">困惑地說出數學老師的名字</button> 
+            <button onclick="makeChoice(8)">戰術性後仰&倒吸一口氣<br>用帶著震驚的語氣叫他老師</br></button>
+          `;
+          break;
+
+        case 4:
+          document.getElementById("story").innerHTML = "異世界垃圾車迎面而來把你送回原本的世界<br>你的旅途因此葬送在了開始</br>";
+          document.querySelector(".button-container").innerHTML = "";
+          break;
+
+        case 5:
+          document.getElementById("story").innerHTML = "呵，看來你的決心也不過如此";
+          document.querySelector(".button-container").innerHTML = "";
+          break;
+
+        case 6:
+          document.getElementById("story").innerHTML = "從你猶豫的那刻開始，你就已經失去了進入異世界的資格了<br>換言之，你已經無法找回正解來雪恥了，你的精神將會被求不出答案的絕望感給侵蝕</br>";
+          document.querySelector(".button-container").innerHTML = "";
+          break;
+
+        case 7:
+          document.getElementById("story").innerHTML = "對方警戒地問出你怎麼知道他名字";
+          document.querySelector(".button-container").innerHTML = `
+            <button onclick="makeChoice(9)">把事情的經過娓娓道來</button>
+            <button onclick="makeChoice(10)">油嘴滑舌地開始搭訕人家</button>
+            `;
+          break;
+
+        case 8:
+          document.getElementById("story").innerHTML = "得到了對方「我不認識你」這樣的回應後，對方轉身離去<br>而你因未滿足在限定時間內邀請到至少一位當地原住民成為夥伴的條件而被遣返回原世界</br>雖然你被遣返後才知道有這限制</br>";
+          document.querySelector(".button-container").innerHTML = "";
+          break;
+
+        case 9:
+          document.getElementById("story").innerHTML = "於是你們成為了伙伴，可喜可賀、可喜可賀!<br>然而這是一場注定沒有結果的旅途，因為從一開始就只是你數學算不出來而已</br>欲知後事如何，且待下回分解</br>";
+          document.querySelector(".button-container").innerHTML = "";
+          break;
+
+        case 10:
+          document.getElementById("story").innerHTML = "對方用看其他生物的眼神注視著你";
+          document.querySelector(".button-container").innerHTML = `
+            <button onclick="makeChoice(8)">繼續噁心人家</button>
+            <button onclick="makeChoice(9)">意識到不對趕快說正事</button>
+          `;
+          break;
+
+        default:
+          break;
+      }
+    }
+  </script>
+</body>
+
+</html> 
